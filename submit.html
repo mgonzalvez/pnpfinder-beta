@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print and Play Finder</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <h1 class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Print and Play Finder</a></h1>
+                <p class="tagline">Search for and discover great print and play games.</p>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="main-nav" id="main-nav">
+                <div class="nav-buttons">
+                    <button class="nav-btn" data-page="index.html">Games</button>
+                    <button class="nav-btn" data-page="tools.html">Tools</button>
+                    <button class="nav-btn active" data-page="submit.html">Submit</button>
+                </div>
+            </nav>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </button>
+            
+            <button id="theme-toggle" class="theme-toggle" title="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="submit-section">
+            <h1 class="page-title">Submit a Print and Play Game</h1>
+            <p class="submit-intro">Help grow our community library! Fill out the form below to submit a new game for review.</p>
+            
+            <form id="game-submit-form" class="submit-form" method="POST" action="/api/submit-game" enctype="application/json">
+                
+                <!-- Section: Contact Information -->
+                <fieldset class="form-section">
+                    <legend>Contact Information</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-group required">
+                            <label for="email">Email Address <span class="required-indicator">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Section: Basic Game Info -->
+                <fieldset class="form-section">
+                    <legend>Basic Game Information</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-group required" style="flex: 2;">
+                            <label for="game-title">Game Title <span class="required-indicator">*</span></label>
+                            <input type="text" id="game-title" name="game_title" required maxlength="200" placeholder="Enter game title">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group required">
+                            <label for="designer">Game Designer <span class="required-indicator">*</span></label>
+                            <input type="text" id="designer" name="designer" required placeholder="Designer name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="publisher">Publisher (optional)</label>
+                            <input type="text" id="publisher" name="publisher" maxlength="100" placeholder="Publisher or web publisher">
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="free_paid">Free or Paid <span class="required-indicator">*</span></label>
+                            <select id="free_paid" name="free_or_paid" required>
+                                <option value="">Select...</option>
+                                <option value="Free">Free</option>
+                                <option value="Paid">Paid</option>
+                                <option value="Name your price">Name your price</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="price">Price (optional)</label>
+                            <input type="text" id="price" name="price" maxlength="20" placeholder="$9.99 or similar">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Section: Game Details -->
+                <fieldset class="form-section">
+                    <legend>Game Details</legend>
+
+                    <div class="form-row">
+                        <div class="form-group required">
+                            <label for="players">Number of Players <span class="required-indicator">*</span></label>
+                            <select id="players" name="number_of_players" required>
+                                <option value="">Select...</option>
+                                <option value="1">1 Player</option>
+                                <option value="1-2">1-2 Players</option>
+                                <option value="1-3">1-3 Players</option>
+                                <option value="1-4">1-4 Players</option>
+                                <option value="1-5">1-5 Players</option>
+                                <option value="1-6">1-6 Players</option>
+                                <option value="1-7">1-7 Players</option>
+                                <option value="2">2 Players</option>
+                                <option value="2+">2+ Players</option>
+                                <option value="3+">3+ Players</option>
+                                <option value="1-100">1-100 Players</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="playtime">Playtime <span class="required-indicator">*</span></label>
+                            <select id="playtime" name="playtime" required>
+                                <option value="">Select...</option>
+                                <option value="up to 10 minutes">Up to 10 minutes</option>
+                                <option value="up to 20 minutes">Up to 20 minutes</option>
+                                <option value="up to 30 minutes">Up to 30 minutes</option>
+                                <option value="up to 60 minutes">Up to 60 minutes</option>
+                                <option value="up to 90 minutes">Up to 90 minutes</option>
+                                <option value="up to 120 minutes">Up to 120 minutes</option>
+                                <option value="120+ minutes">120+ minutes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group required">
+                            <label for="age_range">Age Range <span class="required-indicator">*</span></label>
+                            <select id="age_range" name="age_range" required>
+                                <option value="">Select...</option>
+                                <option value="5+">5+</option>
+                                <option value="8+">8+</option>
+                                <option value="10+">10+</option>
+                                <option value="12+">12+</option>
+                                <option value="14+">14+</option>
+                                <option value="18+">18+</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="release_year">Release Year <span class="required-indicator">*</span></label>
+                            <input type="number" id="release_year" name="release_year" required min="1900" max="2030" placeholder="YYYY">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Section: Themes & Mechanics -->
+                <fieldset class="form-section">
+                    <legend>Themes & Mechanics</legend>
+
+                    <div class="form-row">
+                        <div class="form-group required" style="flex: 2;">
+                            <label for="theme">Theme <span class="required-indicator">*</span></label>
+                            <select id="theme" name="theme" required>
+                                <option value="">Select...</option>
+                                <option value="abstract">Abstract</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="animals/nature">Animals/Nature</option>
+                                <option value="anime/cartoon">Anime/Cartoon</option>
+                                <option value="city building">City Building</option>
+                                <option value="civilization">Civilization</option>
+                                <option value="collecting">Collecting</option>
+                                <option value="crime/mystery/detective">Crime/Mystery/Detective</option>
+                                <option value="cultural heritage">Cultural Heritage</option>
+                                <option value="dungeon crawl">Dungeon Crawl</option>
+                                <option value="economy">Economy</option>
+                                <option value="farming">Farming</option>
+                                <option value="fantasy">Fantasy</option>
+                                <option value="flowers">Flowers</option>
+                                <option value="food">Food</option>
+                                <option value="gardening">Gardening</option>
+                                <option value="historical">Historical</option>
+                                <option value="horror/supernatural">Horror/Supernatural</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="medieval">Medieval</option>
+                                <option value="mining">Mining</option>
+                                <option value="monarchy">Monarchy</option>
+                                <option value="mythology">Mythology</option>
+                                <option value="personal growth">Personal Growth</option>
+                                <option value="party/carnival">Party/Carnival</option>
+                                <option value="pirates">Pirates</option>
+                                <option value="politics">Politics</option>
+                                <option value="post-apocalyptic">Post-Apocalyptic</option>
+                                <option value="puzzle">Puzzle</option>
+                                <option value="racing">Racing</option>
+                                <option value="sports">Sports</option>
+                                <option value="science fiction">Science Fiction</option>
+                                <option value="spies/espionage">Spies/Espionage</option>
+                                <option value="steampunk">Steampunk</option>
+                                <option value="stock market">Stock Market</option>
+                                <option value="survival">Survival</option>
+                                <option value="trains">Trains</option>
+                                <option value="transportation">Transportation</option>
+                                <option value="war">War</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="western">Western</option>
+                                <option value="zombie">Zombie</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="complexity">Gameplay Complexity <span class="required-indicator">*</span></label>
+                            <select id="complexity" name="complexity" required>
+                                <option value="">Select...</option>
+                                <option value="Light">Light</option>
+                                <option value="Light-Medium">Light-Medium</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Medium-Heavy">Medium-Heavy</option>
+                                <option value="Heavy">Heavy</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group required">
+                            <label for="main_mechanism">Main Mechanism <span class="required-indicator">*</span></label>
+                            <select id="main_mechanism" name="main_mechanism" required>
+                                <option value="">Select...</option>
+                                <option value="4X (explore, expand, exploit, annihilate)">4X</option>
+                                <option value="Action Selection">Action Selection</option>
+                                <option value="Auction/Bidding">Auction/Bidding</option>
+                                <option value="Area Control/Investment">Area Control/Investment</option>
+                                <option value="Area Influence">Area Influence</option>
+                                <option value="Area Movement">Area Movement</option>
+                                <option value="Battle Simulation">Battle Simulation</option>
+                                <option value="Battlefield Construction">Battlefield Construction</option>
+                                <option value="Big Board">Big Board</option>
+                                <option value="Card Drafting">Card Drafting</option>
+                                <option value="City Building">City Building</option>
+                                <option value="Collaborative Card Play">Collaborative Card Play</option>
+                                <option value="Collectible Card Game">Collectible Card Game</option>
+                                <option value="Combat">Combat</option>
+                                <option value="Conversation">Conversation</option>
+                                <option value="Cooperative">Cooperative</option>
+                                <option value="Counter Movement">Counter Movement</option>
+                                <option value="Deck Building">Deck Building</option>
+                                <option value="Dice Building">Dice Building</option>
+                                <option value="Dice Placement">Dice Placement</option>
+                                <option value="Drag and Drop">Drag and Drop</option>
+                                <option value="Drafting">Drafting</option>
+                                <option value="Duel">Duel</option>
+                                <option value="Edge of the World">Edge of the World</option>
+                                <option value="Electronic Board Game">Electronic Board Game</option>
+                                <option value="Entomology">Entomology</option>
+                                <option value="Ergonomically Challenging">Ergonomically Challenging</option>
+                                <option value="Event Deck">Event Deck</option>
+                                <option value="Expanding Board">Expanding Board</option>
+                                <option value="Flip-and-Write">Flip-and-Write</option>
+                                <option value="Forced Card Play">Forced Card Play</option>
+                                <option value="Guessing Game">Guessing Game</option>
+                                <option value="Hidden Role/Voting">Hidden Role/Voting</option>
+                                <option value="Infinite Cards">Infinite Cards</option>
+                                <option value="Ladder Climbing">Ladder Climbing</option>
+                                <option value="Layout/Bidding Areas">Layout/Bidding Areas</option>
+                                <option value="Light Strategy">Light Strategy</option>
+                                <option value="Line of Battle">Line of Battle</option>
+                                <option value="Loss of Identity">Loss of Identity</option>
+                                <option value="Match 3 Game">Match 3</option>
+                                <option value="Memory">Memory</option>
+                                <option value="Modular Board">Modular Board</option>
+                                <option value="Movable Token Deck">Movable Token Deck</option>
+                                <option value="Multiple Paths of Progression">Multiple Paths of Progression</option>
+                                <option value="Mystery Game">Mystery Game</option>
+                                <option value="Net/Path Building">Net/Path Building</option>
+                                <option value="No Player Interaction">No Player Interaction</option>
+                                <option value="Off Board Combat">Off Board Combat</option>
+                                <option value="One vs. Many">One vs. Many</option>
+                                <option value="Optical Illusions">Optical Illusions</option>
+                                <option value="Paper-and-Pencil">Paper-and-Pencil</option>
+                                <option value="Pattern Building">Pattern Building</option>
+                                <option value="Pattern Dice">Pattern Dice</option>
+                                <option value="Peaceful Strategy Game">Peaceful Strategy Game</option>
+                                <option value="Pellets/Beans/Others in Container">Pellets/Beans/Others in Container</option>
+                                <option value="Pitching">Pitching</option>
+                                <option value="Player Elimination">Player Elimination</option>
+                                <option value="Point Salad">Point Salad</option>
+                                <option value="Programming">Programming</option>
+                                <option value="Push Your Luck">Push Your Luck</option>
+                                <option value="Quick Play">Quick Play</option>
+                                <option value="Real-Time">Real-Time</option>
+                                <option value="Roll & Write">Roll & Write</option>
+                                <option value="Round-Based Planning">Round-Based Planning</option>
+                                <option value="Scrabble-like">Scrabble-like</option>
+                                <option value="Set Collection">Set Collection</option>
+                                <option value="Simultaneous Action Selection">Simultaneous Action Selection</option>
+                                <option value="Single Player Game">Single Player Game</option>
+                                <option value="Sliding Tiles">Sliding Tiles</option>
+                                <option value="Speed/Reflexes">Speed/Reflexes</option>
+                                <option value="Stacking">Stacking</option>
+                                <option value="Strategy">Strategy</option>
+                                <option value="Table Tennis">Table Tennis</option>
+                                <option value="Take and Be Gentle">Take and Be Gentle</option>
+                                <option value="Tile Placement">Tile Placement</option>
+                                <option value="Timing/Delivery of Actions">Timing/Delivery of Actions</option>
+                                <option value="Turn Order Manipulation">Turn Order Manipulation</option>
+                                <option value="War Game">War Game</option>
+                                <option value="Worker Placement">Worker Placement</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="secondary_mechanism">Secondary Mechanism (optional)</label>
+                            <input type="text" id="secondary_mechanism" name="secondary_mechanism" maxlength="100" placeholder="Optional secondary mechanic">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gameplay_mode">Gameplay Mode (optional)</label>
+                            <select id="gameplay_mode" name="gameplay_mode">
+                                <option value="">Select...</option>
+                                <option value="Competitive">Competitive</option>
+                                <option value="Cooperative">Cooperative</option>
+                                <option value="Solo">Solo</option>
+                                <option value="Solo/Competitive">Solo/Competitive</option>
+                                <option value="Solo/Cooperative">Solo/Cooperative</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="pnp_crafting">PNP Crafting Challenge <span class="required-indicator">*</span></label>
+                            <select id="pnp_crafting" name="pnp_crafting_challenge" required>
+                                <option value="">Select...</option>
+                                <option value="Simple Cuts (a few cards or tiles)">Simple Cuts (a few cards or tiles)</option>
+                                <option value="Moderate Assembly (cards, boards, tiles, square tokens)">Moderate Assembly (cards, boards, tiles, square tokens)</option>
+                                <option value="Complex Assembly (dice, plastic standees, special cards)">Complex Assembly (dice, plastic standees, special cards)</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Section: Descriptions -->
+                <fieldset class="form-section">
+                    <legend>Descriptions</legend>
+
+                    <div class="form-group required">
+                        <label for="one_sentence_desc">Brief Description <span class="required-indicator">*</span></label>
+                        <input type="text" id="one_sentence_desc" name="one_sentence_description" required maxlength="400" placeholder="One sentence description (max 400 chars)">
+                        <small class="form-hint">{count}/400 characters</small>
+                    </div>
+
+                    <div class="form-group required">
+                        <label for="game_desc">Game Description <span class="required-indicator">*</span></label>
+                        <textarea id="game_desc" name="game_description" required maxlength="1000" rows="6" placeholder="Full game description (max 1000 chars)"></textarea>
+                        <small class="form-hint">{count}/1000 characters</small>
+                    </div>
+                </fieldset>
+
+                <!-- Section: Download & Components -->
+                <fieldset class="form-section">
+                    <legend>Download & Components</legend>
+
+                    <div class="form-row">
+                        <div class="form-group required">
+                            <label for="download_link">Download Link <span class="required-indicator">*</span></label>
+                            <input type="url" id="download_link" name="download_link" required placeholder="https://example.com/download">
+                            <small class="form-hint">Must be a valid URL (http or https)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="secondary_download">Secondary Download Link (optional)</label>
+                            <input type="url" id="secondary_download" name="secondary_download_link" placeholder="https://example.com/alternative">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group required">
+                            <label for="print_components">Print Components (required)</label>
+                            <select id="print_components" name="print_components" required>
+                                <option value="">Select...</option>
+                                <option value="1 page">1 Page</option>
+                                <option value="2 pages">2 Pages</option>
+                                <option value="3 pages">3 Pages</option>
+                                <option value="4 pages">4 Pages</option>
+                                <option value="5 pages">5 Pages</option>
+                                <option value="6 pages">6 Pages</option>
+                                <option value="7 pages">7 Pages</option>
+                                <option value="8 pages">8 Pages</option>
+                                <option value="9 pages">9 Pages</option>
+                                <option value="10 pages">10 Pages</option>
+                                <option value="10+ pages">10+ Pages</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other_components">Other Non-PnP Components (optional)</label>
+                            <input type="text" id="other_components" name="other_components" maxlength="200" placeholder="e.g., dice, tokens, cards">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Section: Image & Language -->
+                <fieldset class="form-section">
+                    <legend>Cover Image</legend>
+
+                    <div class="form-group required">
+                        <label for="image_url">Image URL <span class="required-indicator">*</span></label>
+                        <input type="url" id="image_url" name="image_url" required placeholder="https://example.com/image.jpg or https://example.com/image.png">
+                        <small class="form-hint">Must be a valid URL ending in .jpg or .png</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="languages">Languages (optional)</label>
+                            <input type="text" id="languages" name="languages" maxlength="100" placeholder="e.g., English, Spanish">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Submit Button -->
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Submit Game</button>
+                    <p class="form-note">Your submission will be reviewed and added to our database. You'll receive a confirmation email upon successful submission.</p>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+    </div>
+    
+    <footer class="footer-bottom">
+        <div class="container" style="text-align: center;">
+            <p>PnPFinder copyright 2026 by <a href="mailto:help@pnpfinder.com?subject=PnPFinder%20Feedback">Martin Gonzalvez.</a></p>
+            <p style="margin-top: 8px;">
+                Find this useful? ☕ Why not <a href="https://ko-fi.com/marting/" target="_blank" style="color: var(--primary); text-decoration: none;">buy me a coffee?</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/submit-validation.js"></script>
+</body>
+</html>

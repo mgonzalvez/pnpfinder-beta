@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print and Play Finder - Discover Free & Paid PnP Games</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <h1 class="logo">Print and Play Finder</h1>
+                <p class="tagline">Search for and discover great print and play games.</p>
+            </div>
+            <!-- Navigation Menu -->
+            <nav class="main-nav" id="main-nav">
+                <div class="nav-buttons">
+                    <button class="nav-btn active" data-page="index.html">Games</button>
+                    <button class="nav-btn" data-page="tools.html">Tools</button>
+                    <button class="nav-btn" data-page="submit.html">Submit</button>
+                </div>
+            </nav>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </button>
+            
+            <button id="theme-toggle" class="theme-toggle" title="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="search-section">
+                <div class="search-wrapper">
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        class="search-input" 
+                        placeholder="Search games by title, designer, or theme..."
+                        autocomplete="off"
+                    >
+                    <div id="autocomplete-results" class="autocomplete-results"></div>
+                </div>
+                
+                <div class="view-toggle">
+                    <button id="tile-view-btn" class="view-btn active" title="Tile View">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <rect x="2" y="2" width="7" height="7" rx="1"/>
+                            <rect x="11" y="2" width="7" height="7" rx="1"/>
+                            <rect x="2" y="11" width="7" height="7" rx="1"/>
+                            <rect x="11" y="11" width="7" height="7" rx="1"/>
+                        </svg>
+                    </button>
+                    <button id="list-view-btn" class="view-btn" title="List View">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <rect x="2" y="3" width="16" height="3" rx="1"/>
+                            <rect x="2" y="9" width="16" height="3" rx="1"/>
+                            <rect x="2" y="15" width="16" height="3" rx="1"/>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <section class="filters-section">
+                <div class="filters-header">
+                    <button id="toggle-filters" class="toggle-filters-btn">
+                        <span>Filters</span>
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M4 6l4 4 4-4"/>
+                        </svg>
+                    </button>
+                    <div class="filters-right">
+                        <span id="results-count" class="results-count">Loading games...</span>
+                        <div class="sort-group">
+                        <select id="sort-by" class="filter-select">
+                                <option value="" disabled selected>Sort: Newest Added</option>
+                                <option value="newest">Newest Added</option>
+                                <option value="alpha-asc">Alphabetical (A-Z)</option>
+                                <option value="alpha-desc">Alphabetical (Z-A)</option>
+                                <option value="year-desc">Release Year (Newest)</option>
+                                <option value="year-asc">Release Year (Oldest)</option>
+                                <option value="original">Order Added</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="filters-panel" class="filters-panel">
+                    <div class="filter-group">
+                        <label for="filter-players">Players</label>
+                        <select id="filter-players" class="filter-select">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-playtime">Playtime</label>
+                        <select id="filter-playtime" class="filter-select">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-age">Age Range</label>
+                        <select id="filter-age" class="filter-select">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-complexity">Game Complexity</label>
+                        <select id="filter-complexity" class="filter-select">
+                            <option value="">All</option>
+                            <option value="LIGHT">Light</option>
+                            <option value="LIGHT-MEDIUM">Light-Medium</option>
+                            <option value="MEDIUM">Medium</option>
+                            <option value="MEDIUM-HEAVY">Medium-Heavy</option>
+                            <option value="HEAVY">Heavy</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-crafting">Crafting Challenge</label>
+                        <select id="filter-crafting" class="filter-select">
+                            <option value="">All</option>
+                            <option value="Simple Cuts">Simple Cuts</option>
+                            <option value="Moderate Assembly">Moderate Assembly</option>
+                            <option value="Complex Assembly">Complex Assembly</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-theme">Theme</label>
+                        <select id="filter-theme" class="filter-select">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-mechanism">Main Mechanism</label>
+                        <select id="filter-mechanism" class="filter-select">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-year">Release Year</label>
+                        <select id="filter-year" class="filter-select">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-price">Free or Paid</label>
+                        <select id="filter-price" class="filter-select">
+                            <option value="">All</option>
+                            <option value="Free">Free</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Name your price">Name Your Price</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-curated">Curated Lists</label>
+                        <select id="filter-curated" class="filter-select">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+
+                    <button id="clear-filters" class="clear-filters-btn">Clear All</button>
+                </div>
+            </section>
+
+            <div id="pagination-top" class="pagination-container"></div>
+
+            <section id="games-grid" class="games-grid tile-view">
+            </section>
+
+            <div id="pagination-bottom" class="pagination-container"></div>
+        </div>
+    </main>
+
+    <footer class="footer-bottom">
+        <div class="container" style="text-align: center;">
+            <p>PnPFinder copyright 2026 by <a href="mailto:help@pnpfinder.com?subject=PnPFinder%20Feedback">Martin Gonzalvez.</a></p>
+            <p style="margin-top: 8px;">
+                Find this site useful? ☕ Why not <a href="https://ko-fi.com/marting/" target="_blank" style="color: var(--primary); text-decoration: none;">buy me a coffee?</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

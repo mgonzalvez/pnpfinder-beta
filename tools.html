@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print and Play Finder</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <h1 class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Print and Play Finder</a></h1>
+                <p class="tagline">Search for and discover great print and play games.</p>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="main-nav" id="main-nav">
+                <div class="nav-buttons">
+                    <button class="nav-btn" data-page="index.html">Games</button>
+                    <button class="nav-btn active" data-page="tools.html">Tools</button>
+                    <button class="nav-btn" data-page="submit.html">Submit</button>
+                </div>
+            </nav>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </button>
+            
+            <button id="theme-toggle" class="theme-toggle" title="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="tools-section">
+            <h1 class="page-title">Print and Play Tools</h1>
+            <p class="submit-intro">Useful tools to help you get the most out of your print and play gaming experience.</p>
+            
+            <div class="tools-grid">
+                <!-- Launchpad -->
+                <a href="https://launchpad.gonzhome.us" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🚀</div>
+                    <h3 class="tool-title">Launchpad</h3>
+                    <p class="tool-description">Discover the latest print and play game crowdfunding projects and promotions!</p>
+                </a>
+
+                <!-- PnPTools -->
+                <a href="https://pnptools.gonzhome.us" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🛠️</div>
+                    <h3 class="tool-title">PnPTools</h3>
+                    <p class="tool-description">Your essential resource for print and play websites, tools, stores, sources, and more.</p>
+                </a>
+
+                <!-- Formatter -->
+                <a href="https://formatter.gonzhome.us" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">📐</div>
+                    <h3 class="tool-title">Formatter</h3>
+                    <p class="tool-description">Upload your card images, pick a layout, and export a duplex-ready PDF with corner crosshair guides, with flexible spacing and page sizes.</p>
+                </a>
+
+                <!-- Card Extractor -->
+                <a href="https://extractor.gonzhome.us" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">✂️</div>
+                    <h3 class="tool-title">Card Extractor</h3>
+                    <p class="tool-description">Private in-browser app to extract individual card images from uploaded PnP PDFs.</p>
+                </a>
+
+                <!-- Card Prototyper -->
+                <a href="https://prototyper.gonzhome.us" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🎨</div>
+                    <h3 class="tool-title">Card Prototyper</h3>
+                    <p class="tool-description">Design quick card prototypes and export individual card images or print-ready sheets.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer class="footer-bottom">
+        <div class="container" style="text-align: center;">
+            <p>PnPFinder copyright 2026 by <a href="mailto:help@pnpfinder.com?subject=PnPFinder%20Feedback">Martin Gonzalvez.</a></p>
+            <p style="margin-top: 8px;">
+                Find this site useful? ☕ Why not <a href="https://ko-fi.com/marting/" target="_blank" style="color: var(--primary); text-decoration: none;">buy me a coffee?</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>
